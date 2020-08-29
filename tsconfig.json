@@ -12,6 +12,8 @@
     "allowJs": true,
     "moduleResolution": "node",
     "removeComments": true,
+    "strictNullChecks": true,
+    
   },
   "include": [
     "src/**/*"
