@@ -1,5 +1,7 @@
 const path = require("path");
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const {
+    CleanWebpackPlugin
+} = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
@@ -10,7 +12,6 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'build'),
-        publicPath: '/',
         filename: '[name].bundle.js'
     },
     resolve: {
@@ -24,6 +25,7 @@ module.exports = {
         open: true,
         port: 9000,
     },
+    devtool: 'inline-source-map',
     module: {
         rules: [{
                 test: /\.jsx?$/,
@@ -32,7 +34,7 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: [
-                            '@babel/preset-env', 
+                            '@babel/preset-env',
                             '@babel/preset-react',
                             "@babel/preset-typescript"
                         ]
@@ -47,18 +49,16 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    "style-loader",
-                    {
-                        loader: "css-loader",
-                        options: {
-                            modules: true
-                        }
-                    }
+                    'style-loader',
+                    'css-loader',
                 ]
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
-                use: ["file-loader"]
+                loader: 'file-loader',
+                options: {
+                    outputPath: 'images'
+                },
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,

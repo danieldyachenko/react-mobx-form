@@ -1,10 +1,11 @@
 import React from 'react'
+import Icon from "./../assets/hourglass.svg"
 
 export default function App() {
-
     return (
         <>
-            App
+            <img src={Icon}/>
+            dfsdfsdf
         </>
     )
 }
