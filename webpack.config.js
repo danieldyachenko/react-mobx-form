@@ -73,7 +73,7 @@ module.exports = {
         }),
         new CopyPlugin({
             patterns: [{
-                from: path.resolve(__dirname, 'public/robots.txt')
+                from: path.resolve(__dirname, 'public')
             }],
         }),
     ],

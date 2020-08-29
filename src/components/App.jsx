@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Icon from "../assets/hourglass.svg"
 
 export default function App() {
