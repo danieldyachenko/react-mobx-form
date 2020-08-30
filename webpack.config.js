@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    mode: "development",
     entry: {
         index: './src/index.tsx'
     },
@@ -14,15 +13,18 @@ module.exports = {
         filename: '[name].bundle.js'
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'] // Расширения, которые используются
     },
     devServer: {
         index: 'index.html',
-        contentBase: path.join(__dirname, "public"),
-        compress: true,
-        hot: true,
+        contentBase: path.join(__dirname, "public"), // Расположение статических файлов
+        watchContentBase: true, // Изменение файлов вызывает полную перезагрузку страницы.
+        compress: true, // Включить сжатие gzip
+        hot: true, // Горячая замена модуля
         open: true,
         port: 9000,
+        noInfo: true, // Только ошибки и предупреждения о горячей перезагрузке
+        historyApiFallback: true,
     },
     devtool: 'inline-source-map',
     module: {
@@ -63,7 +65,7 @@ module.exports = {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
                 use: ['file-loader']
             }
-        ]
+        ],
     },
     plugins: [
         new CleanWebpackPlugin(),
