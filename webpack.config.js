@@ -1,16 +1,21 @@
 const path = require("path");
 const webpack = require("webpack");
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const {
+    CleanWebpackPlugin
+} = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
+    mode: 'development',
+    target: 'web',
     entry: {
         index: './src/index.tsx'
     },
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: '[name].bundle.js'
+        filename: '[name].bundle.js',
+        // publicPath: '/',
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'] // Расширения, которые используются
@@ -22,13 +27,13 @@ module.exports = {
         compress: true, // Включить сжатие gzip
         hot: true, // Горячая замена модуля
         open: true,
-        port: 9000,
-        noInfo: true, // Только ошибки и предупреждения о горячей перезагрузке
-        historyApiFallback: true,
+        port: 4200,
+        // noInfo: true, // Только ошибки и предупреждения о горячей перезагрузке
     },
     devtool: 'inline-source-map',
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: {
@@ -49,13 +54,10 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                ]
+                use: ['style-loader', 'css-loader',]
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
+                test: /\.(png|jpg|gif)$/,
                 loader: 'file-loader',
                 options: {
                     outputPath: 'images'
@@ -64,6 +66,10 @@ module.exports = {
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
                 use: ['file-loader']
+            },
+            {
+                test: /\.svg$/,
+                use: ['@svgr/webpack'],
             }
         ],
     },
@@ -73,9 +79,11 @@ module.exports = {
             template: 'public/index.html'
         }),
         new CopyPlugin({
-            patterns: [{
-                from: path.resolve(__dirname, 'public')
-            }],
+            patterns: [
+                { from: 'public/robots.txt' },
+                { from: 'public/favicon.ico' },
+                { from: 'public/manifest.json' }
+            ]
         }),
         new webpack.ProvidePlugin({
             'React': 'react',

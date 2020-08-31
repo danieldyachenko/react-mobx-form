@@ -1,9 +1,13 @@
-import Icon from "../assets/hourglass.svg"
+import HourglassIcon from './../assets/hourglass.svg'
+import HippoIcon from './../assets/hippo.png'
 
-export default function App() {
+const App = () => {
     return (
         <>
-            <img src={Icon} />
+            <HourglassIcon/>
+            <img src={HippoIcon}/>
         </>
     )
 }
+
+export default App
