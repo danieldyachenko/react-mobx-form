@@ -1,11 +1,10 @@
+import React from 'react';
+import Form from './Form/Form';
 
-const App = () => {
-
+export default function App() {
     return (
         <>
-            App
+            <Form />
         </>
-    )
+    );
 }
-
-export default App
