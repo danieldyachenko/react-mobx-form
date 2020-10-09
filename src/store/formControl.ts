@@ -1,9 +1,8 @@
 import { observable, action, makeObservable } from 'mobx';
 import { ChangeEvent } from 'react';
-import { Validator } from './types';
+import { IFormControl, Validator } from './types';
 
-
-export default class FormControl {
+export default class FormControl implements IFormControl {
     constructor(private validator: Validator) {
         makeObservable(this);
     }

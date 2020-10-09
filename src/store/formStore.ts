@@ -1,5 +1,6 @@
 import { computed, makeObservable, observable } from 'mobx';
 import FormControl from './formControl';
+import { IFormData } from './types';
 
 export default class FormStore {
     constructor() {
@@ -36,5 +37,14 @@ export default class FormStore {
         if (emptyFields || errors) {
             return true;
         } else return false;
+    }
+
+    @computed
+    get formData() {
+        const data: IFormData = {} as IFormData;
+        for (const [key, formControl] of Object.entries(this)) {
+            data[key] = formControl.value;
+        }
+        return data;
     }
 }

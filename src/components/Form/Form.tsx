@@ -7,6 +7,7 @@ const Form = observer(() => {
 
     const onSubmit = (event: React.FormEvent) => {
         event.preventDefault();
+        console.log(form.formData)
     };
 
     return (
