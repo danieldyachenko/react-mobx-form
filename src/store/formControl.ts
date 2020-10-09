@@ -30,6 +30,6 @@ export default class FormControl implements IFormControl {
 
     @action
     validate() {
-        this.error = this.validator(this.value)
-    };
+        this.error = this.validator(this.value);
+    }
 }

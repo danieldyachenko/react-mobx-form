@@ -1,16 +1,15 @@
 import { ChangeEvent } from "react"
-import FormStore from "./formStore"
+import LoginStore from "./loginStore"
 
 export type Validator = (value: string) => string
 
 export type TRootStore = {
-    form: FormStore
+    form: LoginStore
 }
 
-export interface IFormStore {
+export interface ILoginStore {
     login: string
     password: string
-
 }
 
 export interface IFormData {

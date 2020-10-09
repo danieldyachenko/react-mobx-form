@@ -1,8 +1,8 @@
-import FormStore from "./formStore";
+import LoginStore from "./loginStore";
 
 export default class RootStore {
-    form: FormStore
+    form: LoginStore
     constructor() {
-        this.form = new FormStore()
+        this.form = new LoginStore()
     }
 }
