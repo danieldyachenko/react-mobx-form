@@ -4,7 +4,7 @@ import FormControl from './formControl';
 
 export default class LoginStore extends FormBase {
     constructor() {
-        super()
+        super();
         makeObservable(this);
     }
 
@@ -24,3 +24,4 @@ export default class LoginStore extends FormBase {
         return errorMessage;
     });
 }
+

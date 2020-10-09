@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from './Form/Form';
+import Form from './LoginForm/LoginForm';
 
 export default function App() {
     return (
