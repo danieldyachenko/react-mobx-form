@@ -1,4 +1,4 @@
-import { makeObservable, observable } from 'mobx';
+import { computed, makeObservable, observable } from 'mobx';
 import FormControl from './formControl';
 
 export default class FormStore {
@@ -21,4 +21,20 @@ export default class FormStore {
         else if (!value.length) errorMessage = 'Введите пароль';
         return errorMessage;
     });
+
+    @computed
+    get disabled() {
+        const values: Array<FormControl> = Object.values(this);
+        let emptyFields: number = 0;
+        let errors: number = 0;
+
+        values.forEach((item: FormControl) => {
+            if (!item.value) emptyFields++;
+            if (item.error) errors++;
+        });
+
+        if (emptyFields || errors) {
+            return true;
+        } else return false;
+    }
 }

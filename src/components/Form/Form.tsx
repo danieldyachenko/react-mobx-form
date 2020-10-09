@@ -4,15 +4,9 @@ import { useStore } from '../../store/store';
 
 const Form = observer(() => {
     const { form } = useStore();
-    console.log(form);
 
     const onSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        const formData = {
-            login: form.login.value,
-            password: form.password.value
-        }
-        console.log(formData);
     };
 
     return (
@@ -53,7 +47,7 @@ const Form = observer(() => {
                         <span>{form.password.error}</span>
                     ))}
             </p>
-            <button>Отправить</button>
+            <button disabled={form.disabled}>Отправить</button>
         </form>
     );
 });
