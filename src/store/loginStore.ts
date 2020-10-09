@@ -1,7 +1,6 @@
-import { computed, makeObservable, observable } from 'mobx';
+import { makeObservable, observable } from 'mobx';
 import FormBase from './formBase';
 import FormControl from './formControl';
-import { IFormData } from './types';
 
 export default class LoginStore extends FormBase {
     constructor() {

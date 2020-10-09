@@ -1,8 +1,9 @@
 import LoginStore from "./loginStore";
+import { IRootStore } from "./types";
 
-export default class RootStore {
-    form: LoginStore
+export default class RootStore implements IRootStore {
+    loginForm: LoginStore
     constructor() {
-        this.form = new LoginStore()
+        this.loginForm = new LoginStore()
     }
 }

@@ -1,15 +1,15 @@
 import { computed, makeObservable } from 'mobx';
 import FormControl from './formControl';
 import LoginStore from './loginStore';
-import { IFormData } from './types';
+import { IFormBase, IFormData } from './types';
 
-export default class FormBase {
+export default class FormBase implements IFormBase {
     constructor() {
         makeObservable(this);
     }
 
     @computed
-    get disabled() {
+    get disabled(): boolean {
         const values: Array<FormControl> = Object.values(this);
         let emptyFields: number = 0;
         let errors: number = 0;
@@ -25,7 +25,7 @@ export default class FormBase {
     }
 
     @computed
-    get formData() {
+    get formData(): IFormData {
         const data: IFormData = {} as IFormData;
         for (const [key, formControl] of Object.entries(this)) {
             data[key] = formControl.value;

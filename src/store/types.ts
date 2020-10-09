@@ -26,3 +26,12 @@ export interface IFormControl {
     onBlur: () => void
     validate: () => void
 }
+
+export interface IFormBase {
+    disabled: boolean
+    formData: IFormData
+}
+
+export interface IRootStore {
+    loginForm: LoginStore
+}
