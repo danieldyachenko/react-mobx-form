@@ -25,3 +25,4 @@ export default class LoginStore extends FormBase {
     });
 }
 
+
