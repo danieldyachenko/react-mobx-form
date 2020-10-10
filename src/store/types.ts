@@ -10,6 +10,7 @@ export type TRootStore = {
 export interface ILoginStore {
     login: string
     password: string
+    rememberMe: boolean
 }
 
 export interface IFormData {

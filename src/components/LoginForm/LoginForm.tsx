@@ -48,22 +48,15 @@ const Form = observer(() => {
                         <span>{loginForm.password.error}</span>
                     ))}
             </p>
-            {/* <p>
-                <label htmlFor='rememberMe'>Пароль</label>
+            <p>
+                <label htmlFor='rememberMe'>Запомнить пароль</label>
                 <input
-                    value={loginForm.rememberMe.value}
+                    checked={loginForm.rememberMe.checked}
                     onChange={loginForm.rememberMe.onChange}
-                    onBlur={loginForm.rememberMe.onBlur}
                     type='checkbox'
                     id='rememberMe'
-                    style={{ display: 'block' }}
                 />
-
-                {loginForm.rememberMe.error ||
-                    (loginForm.rememberMe.touched && (
-                        <span>{loginForm.rememberMe.error}</span>
-                    ))}
-            </p> */}
+            </p>
             <button disabled={loginForm.disabled}>Отправить</button>
         </form>
     );

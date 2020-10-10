@@ -1,6 +1,7 @@
 import { makeObservable, observable } from 'mobx';
 import FormBase from './formBase';
-import FormControl from './formControl';
+import FormCheckControl from './formCheckControl';
+import FormTextControl from './formTextControl';
 
 export default class LoginStore extends FormBase {
     constructor() {
@@ -9,7 +10,7 @@ export default class LoginStore extends FormBase {
     }
 
     @observable
-    login = new FormControl((value: string) => {
+    login = new FormTextControl((value: string) => {
         let errorMessage: null | string;
         if (value.length > 5) errorMessage = 'Длинный логин';
         else if (!value.length) errorMessage = 'Введите логин';
@@ -17,12 +18,15 @@ export default class LoginStore extends FormBase {
     });
 
     @observable
-    password = new FormControl((value: string) => {
+    password = new FormTextControl((value: string) => {
         let errorMessage: null | string;
         if (value.length > 5) errorMessage = 'Длинный пароль';
         else if (!value.length) errorMessage = 'Введите пароль';
         return errorMessage;
     });
+
+    @observable
+    rememberMe = new FormCheckControl(false)
 }
 
 
